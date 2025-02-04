@@ -72,8 +72,8 @@ export default function SocketIOComponent() {
           console.error("Failed to send message:", error);
           return;
         }
-        setInput("");
       });
+      setInput("");
     }
   }, [input, isPublic]);
 
@@ -82,7 +82,6 @@ export default function SocketIOComponent() {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
         sendMessage();
-        setInput("");
       }
     },
     [sendMessage]
