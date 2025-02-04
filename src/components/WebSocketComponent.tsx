@@ -15,8 +15,7 @@ export default function SocketIOComponent() {
   useEffect(() => {
     if (!socketRef.current && !isConnecting.current) {
       isConnecting.current = true;
-
-      const socket = io("http://localhost:3000", {
+      const socket = io(import.meta.env.VITE_WS_ENDPOINT, {
         autoConnect: true,
         transports: ["websocket"],
       });
@@ -82,8 +81,8 @@ export default function SocketIOComponent() {
             className={`mb-2 p-2 rounded-lg border`}
             style={{ maxWidth: "80%" }}
           >
+            <div className="text-gray-800">{messageResponse.client} says:</div>
             <div className="text-gray-800">{messageResponse.content}</div>
-            <div className="text-gray-800">{messageResponse.client}</div>
           </div>
         ))}
       </div>
